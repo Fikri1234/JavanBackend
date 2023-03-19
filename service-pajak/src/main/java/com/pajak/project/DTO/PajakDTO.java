@@ -7,6 +7,7 @@ import java.util.Date;
 
 import com.pajak.project.Entity.PajakEntity;
 import com.pajak.project.Enum.RoleEnum;
+import com.pajak.project.Enum.StatusEnum;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -31,12 +32,16 @@ public class PajakDTO {
 	
 	Date tanggal;
 	
-	String status;
+	StatusEnum status = StatusEnum.PENDING;
 
 	String createdBy;
 	
 	Date createdDate;
 	RoleEnum role;
+	
+	String updatedBy;
+	Date updatedDate;
+	RoleEnum updateRole = RoleEnum.USER;
 	
 	/**
 	 * @param id
@@ -53,6 +58,9 @@ public class PajakDTO {
 		this.createdBy = entity.getCreatedBy();
 		this.createdDate = entity.getCreatedDate();
 		this.role = entity.getRole();
+		this.updatedBy = entity.getUpdatedBy();
+		this.updatedDate = entity.getCreatedDate();
+		this.updateRole = entity.getUpdateRole();
 	}
 	
 	

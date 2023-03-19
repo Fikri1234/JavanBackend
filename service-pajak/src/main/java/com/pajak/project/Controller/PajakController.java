@@ -28,6 +28,7 @@ import com.pajak.project.DTO.MUserDTO;
 import com.pajak.project.DTO.PajakDTO;
 import com.pajak.project.Entity.PajakEntity;
 import com.pajak.project.Enum.RoleEnum;
+import com.pajak.project.Enum.StatusEnum;
 import com.pajak.project.Service.PajakService;
 import com.pajak.project.Util.CustomException;
 
@@ -76,40 +77,31 @@ public class PajakController {
 		return new ResponseEntity<>(dtos, HttpStatus.OK);
 	}
 	
-	@GetMapping("/maker")
+	@GetMapping("/checker-for/maker")
 	public ResponseEntity<Object> retrieveAllMaker() {
 		
-		MUserDTO userDto = pajakService.getUser();
-		if (RoleEnum.CHECKER.isEqual(userDto.getRole().getCode())) {
-			List<PajakDTO> dtos = new ArrayList<>();
-			List<PajakEntity> entities = pajakService.findByRole(RoleEnum.MAKER);
-			
-			if (!entities.isEmpty()) {
-				dtos = entities.stream().map(PajakDTO::new).collect(Collectors.toList());
-			}
-			
-			return new ResponseEntity<>(dtos, HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>(null, HttpStatus.FORBIDDEN);
+		List<PajakDTO> dtos = new ArrayList<>();
+		List<PajakEntity> entities = pajakService.findByRole(RoleEnum.MAKER);
+		
+		if (!entities.isEmpty()) {
+			dtos = entities.stream().map(PajakDTO::new).collect(Collectors.toList());
 		}
+		
+		return new ResponseEntity<>(dtos, HttpStatus.OK);
 	}
 	
-	@GetMapping("/checker")
+	@GetMapping("approver-for/checker")
 	public ResponseEntity<Object> retrieveAllChecker() {
 		
-		MUserDTO userDto = pajakService.getUser();
-		if (RoleEnum.APPROVER.isEqual(userDto.getRole().getCode())) {
-			List<PajakDTO> dtos = new ArrayList<>();
-			List<PajakEntity> entities = pajakService.findByRole(RoleEnum.CHECKER);
-			
-			if (!entities.isEmpty()) {
-				dtos = entities.stream().map(PajakDTO::new).collect(Collectors.toList());
-			}
-			
-			return new ResponseEntity<>(dtos, HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>(null, HttpStatus.FORBIDDEN);
+		List<PajakDTO> dtos = new ArrayList<>();
+		List<PajakEntity> entities = pajakService.findByRole(RoleEnum.MAKER);
+		
+		if (!entities.isEmpty()) {
+			dtos = entities.stream().filter(x -> x.getStatus().isEqual(StatusEnum.APPROVED.getCode()))
+					.map(PajakDTO::new).collect(Collectors.toList());
 		}
+		
+		return new ResponseEntity<>(dtos, HttpStatus.OK);
 	}
 	
 	@PostMapping("/maker")
@@ -137,32 +129,32 @@ public class PajakController {
 		}
     }
 	
-	@PostMapping("/checker")
-    public ResponseEntity<Object> postCheckerPajakEntity(@RequestBody PajakDTO dto) throws CustomException {
-        log.info("REST API for insert postPajakEntity: {}", dto);
-        MUserDTO userDto = pajakService.getUser();
-		if (RoleEnum.CHECKER.isEqual(userDto.getRole().getCode())) {
-			try {
-				PajakEntity entity = new PajakEntity();
-				BeanUtils.copyProperties(dto, entity);
-
-				entity.setCreatedBy(userDto.getEmail());
-				entity.setCreatedDate(new Date());
-				entity.setRole(userDto.getRole());
-				pajakService.save(entity);
-
-				BeanUtils.copyProperties(entity, dto);
-				return new ResponseEntity<>(dto, HttpStatus.CREATED);
-			} catch (Exception e) {
-				e.printStackTrace();
-				throw new CustomException(e.getMessage(), HttpStatus.CONFLICT);
-			}
-		} else {
-			return new ResponseEntity<>(null, HttpStatus.FORBIDDEN);
-		}
-    }
+//	@PostMapping("/checker")
+//    public ResponseEntity<Object> postCheckerPajakEntity(@RequestBody PajakDTO dto) throws CustomException {
+//        log.info("REST API for insert postPajakEntity: {}", dto);
+//        MUserDTO userDto = pajakService.getUser();
+//		if (RoleEnum.CHECKER.isEqual(userDto.getRole().getCode())) {
+//			try {
+//				PajakEntity entity = new PajakEntity();
+//				BeanUtils.copyProperties(dto, entity);
+//
+//				entity.setCreatedBy(userDto.getEmail());
+//				entity.setCreatedDate(new Date());
+//				entity.setRole(userDto.getRole());
+//				pajakService.save(entity);
+//
+//				BeanUtils.copyProperties(entity, dto);
+//				return new ResponseEntity<>(dto, HttpStatus.CREATED);
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//				throw new CustomException(e.getMessage(), HttpStatus.CONFLICT);
+//			}
+//		} else {
+//			return new ResponseEntity<>(null, HttpStatus.FORBIDDEN);
+//		}
+//    }
 	
-	@PutMapping("/")
+	@PutMapping("/checker/status")
     public ResponseEntity<Object> putPajakEntity(@RequestBody PajakDTO dto) throws CustomException {
         log.info("REST API for update putPajakEntity");
         
@@ -174,8 +166,13 @@ public class PajakController {
  		}
         
         try {
-        	PajakEntity entity = new PajakEntity();
- 			BeanUtils.copyProperties(dto, entity);
+        	
+        	MUserDTO userDto = pajakService.getUser();
+        	
+        	opt.get().setStatus(dto.getStatus());
+        	opt.get().setUpdatedBy(userDto.getEmail());
+        	opt.get().setUpdatedDate(new Date());
+        	opt.get().setUpdateRole(userDto.getRole());
  			
  			pajakService.update(opt.get());
  			
