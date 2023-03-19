@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import com.pajak.project.Enum.RoleEnum;
+import com.pajak.project.Enum.StatusEnum;
 
 import lombok.AccessLevel;
 import lombok.Data;
@@ -42,7 +43,9 @@ public class PajakEntity implements Serializable {
 	
 	Date tanggal;
 	
-	String status;
+	@Enumerated(EnumType.STRING)
+	@Column(name = "status", columnDefinition = "enum('PENDING','REJECTED','APPROVED')", nullable = false)
+	StatusEnum status = StatusEnum.PENDING;
 	
 	String createdBy;
 	
@@ -51,4 +54,12 @@ public class PajakEntity implements Serializable {
 	@Enumerated(EnumType.STRING)
 	@Column(name = "role", columnDefinition = "enum('ADMIN','USER','MAKER','CHECKER','APPROVER')", nullable = false)
 	RoleEnum role = RoleEnum.USER;
+	
+	String updatedBy;
+	
+	Date updatedDate;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(name = "updateRole", columnDefinition = "enum('ADMIN','USER','MAKER','CHECKER','APPROVER')", nullable = false)
+	RoleEnum updateRole = RoleEnum.USER;
 }

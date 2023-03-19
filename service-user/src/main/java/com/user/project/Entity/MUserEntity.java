@@ -25,7 +25,7 @@ import lombok.experimental.FieldDefaults;
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
-@Table(name="M_USER")
+@Table(name="tbl_user")
 public class MUserEntity implements Serializable {
 
 	/**
