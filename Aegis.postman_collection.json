@@ -1,0 +1,1440 @@
+{
+	"info": {
+		"_postman_id": "f9542ad1-763f-42ce-b2d1-8871d11a0db5",
+		"name": "Aegis",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23330519"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJicnVsbHl6QGdtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbIkFETUlOIl19.wijBQ6sEZNoN06uX9HRt5qAlCeGc__HA24gienHxHT-UdLhWvSaDXUilpFinF33_Phy4G0pKt3duaDCwDNtfQQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"email\": \"approver@gmail.com\",\r\n        \"password\": \"admin1234\",\r\n        \"role\": \"APPROVER\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8900/user/",
+							"host": [
+								"localhost"
+							],
+							"port": "8900",
+							"path": [
+								"user",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"email\": \"approver@gmail.com\",\r\n        \"password\": \"admin1234\",\r\n        \"role\": \"APPROVER\"\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8900/user/",
+									"host": [
+										"localhost"
+									],
+									"port": "8900",
+									"path": [
+										"user",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST, GET, PUT, DELETE"
+								},
+								{
+									"key": "Access-Control-Max-Age",
+									"value": "3600"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Authorization, X-Forwarded-For, xsrf-token, Accept"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Mar 2023 14:44:59 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 4,\n    \"email\": \"approver@gmail.com\",\n    \"password\": \"$2a$08$IjPbSlkM7a3N0OpdFxMtdeP6KxPc8towA/WFwmgmaW8nq9AE.miuK\",\n    \"role\": \"APPROVER\"\n}"
+						}
+					]
+				},
+				{
+					"name": "get all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJicnVsbHl6QGdtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbIkFETUlOIl19.wijBQ6sEZNoN06uX9HRt5qAlCeGc__HA24gienHxHT-UdLhWvSaDXUilpFinF33_Phy4G0pKt3duaDCwDNtfQQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"email\": \"approver@gmail.com\",\r\n        \"password\": \"admin1234\",\r\n        \"role\": \"APPROVER\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8900/user/",
+							"host": [
+								"localhost"
+							],
+							"port": "8900",
+							"path": [
+								"user",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get all",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"email\": \"approver@gmail.com\",\r\n        \"password\": \"admin1234\",\r\n        \"role\": \"APPROVER\"\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8900/user/",
+									"host": [
+										"localhost"
+									],
+									"port": "8900",
+									"path": [
+										"user",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST, GET, PUT, DELETE"
+								},
+								{
+									"key": "Access-Control-Max-Age",
+									"value": "3600"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Authorization, X-Forwarded-For, xsrf-token, Accept"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Mar 2023 14:52:08 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"email\": \"brullyz@gmail.com\",\n        \"password\": \"$2a$08$GA5EWEF5oG8bAfGgT45UQeHHw.8VOdmW5yIINXpNVpS1fW/kGFn2e\",\n        \"role\": \"ADMIN\"\n    },\n    {\n        \"id\": 2,\n        \"email\": \"maker@gmail.com\",\n        \"password\": \"$2a$08$Xoo1AyyYqTW0No1X5MiUhuCvML/dXrpmlpjJaFJmGrZ5xJeiszPFy\",\n        \"role\": \"MAKER\"\n    },\n    {\n        \"id\": 3,\n        \"email\": \"checker@gmail.com\",\n        \"password\": \"$2a$08$C3Nt1JEyMv8190l2HDKmMeJXEJzvHsUlX7IfELHLbMEiVrAscGowi\",\n        \"role\": \"CHECKER\"\n    },\n    {\n        \"id\": 4,\n        \"email\": \"approver@gmail.com\",\n        \"password\": \"$2a$08$IjPbSlkM7a3N0OpdFxMtdeP6KxPc8towA/WFwmgmaW8nq9AE.miuK\",\n        \"role\": \"APPROVER\"\n    }\n]"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Pajak",
+			"item": [
+				{
+					"name": "register by maker",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYWtlckBnbWFpbC5jb20iLCJhdXRob3JpdGllcyI6WyJNQUtFUiJdfQ.Hc5SZhx9aQ8kzmTydvYHHv-8iWcA0NAuZ_djUuDd48Yr3Q0kN3AIvNf6gCEkNG3gpAspJImaVXMIDfWZpaqVww",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJicnVsbHl6QGdtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbIlVTRVIiXX0.QO8iJJ5cRxFeeAb9jqR7KcShHLIqnIhdkuFFymWeFUHJG40TWzUB9y3pM_o5b-LDWo28yLADEhiPpauR1toBWw",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nomorResi\": \"1234\",\r\n    \"tanggal\": \"2022-02-13\",\r\n    \"status\": \"done\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8900/pajak/maker",
+							"host": [
+								"localhost"
+							],
+							"port": "8900",
+							"path": [
+								"pajak",
+								"maker"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "register by maker",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJicnVsbHl6QGdtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbIlVTRVIiXX0.QO8iJJ5cRxFeeAb9jqR7KcShHLIqnIhdkuFFymWeFUHJG40TWzUB9y3pM_o5b-LDWo28yLADEhiPpauR1toBWw",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nomorResi\": \"333\",\r\n    \"tanggal\": \"2022-05-13\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8900/pajak/maker",
+									"host": [
+										"localhost"
+									],
+									"port": "8900",
+									"path": [
+										"pajak",
+										"maker"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST, GET, PUT, DELETE"
+								},
+								{
+									"key": "Access-Control-Max-Age",
+									"value": "3600"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Authorization, X-Forwarded-For, xsrf-token, Accept"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Mar 2023 15:27:55 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 6,\n    \"nomorResi\": \"333\",\n    \"tanggal\": \"2022-05-13T00:00:00.000+00:00\",\n    \"status\": \"PENDING\",\n    \"createdBy\": \"maker@gmail.com\",\n    \"createdDate\": \"2023-03-19T15:27:55.736+00:00\",\n    \"role\": \"MAKER\",\n    \"updatedBy\": null,\n    \"updatedDate\": null,\n    \"updateRole\": \"USER\"\n}"
+						}
+					]
+				},
+				{
+					"name": "checker from data maker",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjaGVja2VyQGdtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbIkNIRUNLRVIiXX0.sKsoCIjTQPzLxeGhkqV9IEifKKFRhdPm2YYKfZj8tAwHwJpszZjVgK314EIRI4q95c0CUXPmu4PjiNCDuej_cA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJicnVsbHl6QGdtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbIlVTRVIiXX0.QO8iJJ5cRxFeeAb9jqR7KcShHLIqnIhdkuFFymWeFUHJG40TWzUB9y3pM_o5b-LDWo28yLADEhiPpauR1toBWw",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nomorResi\": \"12345\",\r\n    \"tanggal\": \"2022-02-13\",\r\n    \"status\": \"done\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8900/pajak/checker-for/maker",
+							"host": [
+								"localhost"
+							],
+							"port": "8900",
+							"path": [
+								"pajak",
+								"checker-for",
+								"maker"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "checker from data maker",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJicnVsbHl6QGdtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbIlVTRVIiXX0.QO8iJJ5cRxFeeAb9jqR7KcShHLIqnIhdkuFFymWeFUHJG40TWzUB9y3pM_o5b-LDWo28yLADEhiPpauR1toBWw",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nomorResi\": \"12345\",\r\n    \"tanggal\": \"2022-02-13\",\r\n    \"status\": \"done\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8900/pajak/checker-for/maker",
+									"host": [
+										"localhost"
+									],
+									"port": "8900",
+									"path": [
+										"pajak",
+										"checker-for",
+										"maker"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST, GET, PUT, DELETE"
+								},
+								{
+									"key": "Access-Control-Max-Age",
+									"value": "3600"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Authorization, X-Forwarded-For, xsrf-token, Accept"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Mar 2023 15:03:16 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"nomorResi\": \"1234\",\n        \"tanggal\": \"2022-02-13T00:00:00.000+00:00\",\n        \"status\": \"done\",\n        \"createdBy\": \"maker@gmail.com\",\n        \"createdDate\": \"2023-03-19T15:01:21.000+00:00\",\n        \"role\": \"MAKER\"\n    },\n    {\n        \"id\": 2,\n        \"nomorResi\": \"12345\",\n        \"tanggal\": \"2022-02-13T00:00:00.000+00:00\",\n        \"status\": \"done\",\n        \"createdBy\": \"maker@gmail.com\",\n        \"createdDate\": \"2023-03-19T15:02:09.000+00:00\",\n        \"role\": \"MAKER\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "checker update status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjaGVja2VyQGdtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbIkNIRUNLRVIiXX0.sKsoCIjTQPzLxeGhkqV9IEifKKFRhdPm2YYKfZj8tAwHwJpszZjVgK314EIRI4q95c0CUXPmu4PjiNCDuej_cA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJicnVsbHl6QGdtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbIlVTRVIiXX0.QO8iJJ5cRxFeeAb9jqR7KcShHLIqnIhdkuFFymWeFUHJG40TWzUB9y3pM_o5b-LDWo28yLADEhiPpauR1toBWw",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 2,\r\n    \"status\": \"APPROVED\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8900/pajak/checker/status",
+							"host": [
+								"localhost"
+							],
+							"port": "8900",
+							"path": [
+								"pajak",
+								"checker",
+								"status"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "approved",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJicnVsbHl6QGdtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbIlVTRVIiXX0.QO8iJJ5cRxFeeAb9jqR7KcShHLIqnIhdkuFFymWeFUHJG40TWzUB9y3pM_o5b-LDWo28yLADEhiPpauR1toBWw",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 2,\r\n    \"status\": \"APPROVED\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8900/pajak/checker/status",
+									"host": [
+										"localhost"
+									],
+									"port": "8900",
+									"path": [
+										"pajak",
+										"checker",
+										"status"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST, GET, PUT, DELETE"
+								},
+								{
+									"key": "Access-Control-Max-Age",
+									"value": "3600"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Authorization, X-Forwarded-For, xsrf-token, Accept"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Mar 2023 15:15:13 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"nomorResi\": \"12345\",\n    \"tanggal\": \"2022-02-13T00:00:00.000+00:00\",\n    \"status\": \"APPROVED\",\n    \"createdBy\": \"maker@gmail.com\",\n    \"createdDate\": \"2023-03-19T15:02:09.000+00:00\",\n    \"role\": \"MAKER\"\n}"
+						},
+						{
+							"name": "rejected",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJicnVsbHl6QGdtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbIlVTRVIiXX0.QO8iJJ5cRxFeeAb9jqR7KcShHLIqnIhdkuFFymWeFUHJG40TWzUB9y3pM_o5b-LDWo28yLADEhiPpauR1toBWw",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 3,\r\n    \"status\": \"REJECTED\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8900/pajak/checker/status",
+									"host": [
+										"localhost"
+									],
+									"port": "8900",
+									"path": [
+										"pajak",
+										"checker",
+										"status"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST, GET, PUT, DELETE"
+								},
+								{
+									"key": "Access-Control-Max-Age",
+									"value": "3600"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Authorization, X-Forwarded-For, xsrf-token, Accept"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Mar 2023 15:16:19 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 3,\n    \"nomorResi\": \"1111\",\n    \"tanggal\": \"2022-02-13T00:00:00.000+00:00\",\n    \"status\": \"REJECTED\",\n    \"createdBy\": \"maker@gmail.com\",\n    \"createdDate\": \"2023-03-19T15:12:38.000+00:00\",\n    \"role\": \"MAKER\"\n}"
+						}
+					]
+				},
+				{
+					"name": "approver from data checker maker",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhcHByb3ZlckBnbWFpbC5jb20iLCJhdXRob3JpdGllcyI6WyJBUFBST1ZFUiJdfQ.p2zkAi79xVt-U7Hzcy1TH-xexgBmDb8U_zqB72lTGGqZxTm94l_orSCzgJnSV7Vpm5VCzYyTIFhFhLZfrQ4UYQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJicnVsbHl6QGdtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbIlVTRVIiXX0.QO8iJJ5cRxFeeAb9jqR7KcShHLIqnIhdkuFFymWeFUHJG40TWzUB9y3pM_o5b-LDWo28yLADEhiPpauR1toBWw",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nomorResi\": \"12345\",\r\n    \"tanggal\": \"2022-02-13\",\r\n    \"status\": \"done\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8900/pajak/approver-for/checker",
+							"host": [
+								"localhost"
+							],
+							"port": "8900",
+							"path": [
+								"pajak",
+								"approver-for",
+								"checker"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "approver from data checker maker",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJicnVsbHl6QGdtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbIlVTRVIiXX0.QO8iJJ5cRxFeeAb9jqR7KcShHLIqnIhdkuFFymWeFUHJG40TWzUB9y3pM_o5b-LDWo28yLADEhiPpauR1toBWw",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nomorResi\": \"12345\",\r\n    \"tanggal\": \"2022-02-13\",\r\n    \"status\": \"done\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8900/pajak/approver-for/checker",
+									"host": [
+										"localhost"
+									],
+									"port": "8900",
+									"path": [
+										"pajak",
+										"approver-for",
+										"checker"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST, GET, PUT, DELETE"
+								},
+								{
+									"key": "Access-Control-Max-Age",
+									"value": "3600"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Authorization, X-Forwarded-For, xsrf-token, Accept"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Mar 2023 15:29:51 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"nomorResi\": \"1234\",\n        \"tanggal\": \"2022-02-13T00:00:00.000+00:00\",\n        \"status\": \"APPROVED\",\n        \"createdBy\": \"maker@gmail.com\",\n        \"createdDate\": \"2023-03-19T15:01:21.000+00:00\",\n        \"role\": \"MAKER\",\n        \"updatedBy\": null,\n        \"updatedDate\": \"2023-03-19T15:01:21.000+00:00\",\n        \"updateRole\": \"ADMIN\"\n    },\n    {\n        \"id\": 2,\n        \"nomorResi\": \"12345\",\n        \"tanggal\": \"2022-02-13T00:00:00.000+00:00\",\n        \"status\": \"APPROVED\",\n        \"createdBy\": \"maker@gmail.com\",\n        \"createdDate\": \"2023-03-19T15:02:09.000+00:00\",\n        \"role\": \"MAKER\",\n        \"updatedBy\": null,\n        \"updatedDate\": \"2023-03-19T15:02:09.000+00:00\",\n        \"updateRole\": \"ADMIN\"\n    },\n    {\n        \"id\": 4,\n        \"nomorResi\": \"2222\",\n        \"tanggal\": \"2022-05-13T00:00:00.000+00:00\",\n        \"status\": \"APPROVED\",\n        \"createdBy\": \"maker@gmail.com\",\n        \"createdDate\": \"2023-03-19T15:16:06.000+00:00\",\n        \"role\": \"MAKER\",\n        \"updatedBy\": null,\n        \"updatedDate\": \"2023-03-19T15:16:06.000+00:00\",\n        \"updateRole\": \"ADMIN\"\n    }\n]"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"brullyz@gmail.com\",\r\n    \"password\": \"admin1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8900/auth/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8900",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "admin",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"brullyz@gmail.com\",\r\n    \"password\": \"admin1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8900/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8900",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "POST, GET, PUT, DELETE"
+						},
+						{
+							"key": "Access-Control-Max-Age",
+							"value": "3600"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin, X-Requested-With, Content-Type, Authorization, X-Forwarded-For, xsrf-token, Accept"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Mar 2023 14:43:56 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"jwttoken\": \"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJicnVsbHl6QGdtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbIkFETUlOIl19.wijBQ6sEZNoN06uX9HRt5qAlCeGc__HA24gienHxHT-UdLhWvSaDXUilpFinF33_Phy4G0pKt3duaDCwDNtfQQ\",\n    \"expires_in\": 1600,\n    \"userId\": 1\n}"
+				},
+				{
+					"name": "maker",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"maker@gmail.com\",\r\n    \"password\": \"admin1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8900/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8900",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "POST, GET, PUT, DELETE"
+						},
+						{
+							"key": "Access-Control-Max-Age",
+							"value": "3600"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin, X-Requested-With, Content-Type, Authorization, X-Forwarded-For, xsrf-token, Accept"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Mar 2023 14:50:31 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"jwttoken\": \"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYWtlckBnbWFpbC5jb20iLCJhdXRob3JpdGllcyI6WyJNQUtFUiJdfQ.Hc5SZhx9aQ8kzmTydvYHHv-8iWcA0NAuZ_djUuDd48Yr3Q0kN3AIvNf6gCEkNG3gpAspJImaVXMIDfWZpaqVww\",\n    \"expires_in\": 1600,\n    \"userId\": 2\n}"
+				},
+				{
+					"name": "checker",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"checker@gmail.com\",\r\n    \"password\": \"admin1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8900/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8900",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "POST, GET, PUT, DELETE"
+						},
+						{
+							"key": "Access-Control-Max-Age",
+							"value": "3600"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin, X-Requested-With, Content-Type, Authorization, X-Forwarded-For, xsrf-token, Accept"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Mar 2023 14:50:50 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"jwttoken\": \"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjaGVja2VyQGdtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbIkNIRUNLRVIiXX0.sKsoCIjTQPzLxeGhkqV9IEifKKFRhdPm2YYKfZj8tAwHwJpszZjVgK314EIRI4q95c0CUXPmu4PjiNCDuej_cA\",\n    \"expires_in\": 1600,\n    \"userId\": 3\n}"
+				},
+				{
+					"name": "approver",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"approver@gmail.com\",\r\n    \"password\": \"admin1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8900/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8900",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "POST, GET, PUT, DELETE"
+						},
+						{
+							"key": "Access-Control-Max-Age",
+							"value": "3600"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Origin, X-Requested-With, Content-Type, Authorization, X-Forwarded-For, xsrf-token, Accept"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Mar 2023 14:51:10 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"jwttoken\": \"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhcHByb3ZlckBnbWFpbC5jb20iLCJhdXRob3JpdGllcyI6WyJBUFBST1ZFUiJdfQ.p2zkAi79xVt-U7Hzcy1TH-xexgBmDb8U_zqB72lTGGqZxTm94l_orSCzgJnSV7Vpm5VCzYyTIFhFhLZfrQ4UYQ\",\n    \"expires_in\": 1600,\n    \"userId\": 4\n}"
+				}
+			]
+		}
+	]
+}
