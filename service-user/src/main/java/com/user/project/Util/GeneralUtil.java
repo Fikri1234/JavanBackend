@@ -31,25 +31,25 @@ public class GeneralUtil {
 	@Autowired
 	private MParamService mParamService;
 
-	public String getUserIdFromToken() {
-		String bearerToken = httpServletRequest.getHeader("Authorization");
-		
-		try {
-			String token = bearerToken.replace("Bearer ", "");
-			String jwtKey = "";
-			
-			Optional<MParamEntity> opt = mParamService.findByParamName(ParamConstant.JWT_KEY);
-			if (opt.isPresent()) {
-				jwtKey = opt.get().getParamValue();
-			}
-			
-			Jws<Claims> claims = Jwts.parser().setSigningKey(jwtKey).parseClaimsJws(token);
-			return claims.getBody().getSubject();
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-			return "Unknown";
-		}
-	}
+//	public String getUserIdFromToken() {
+//		String bearerToken = httpServletRequest.getHeader("Authorization");
+//		
+//		try {
+//			String token = bearerToken.replace("Bearer ", "");
+//			String jwtKey = "";
+//			
+//			Optional<MParamEntity> opt = mParamService.findByParamName(ParamConstant.JWT_KEY);
+//			if (opt.isPresent()) {
+//				jwtKey = opt.get().getParamValue();
+//			}
+//			
+//			Jws<Claims> claims = Jwts.parser().setSigningKey(jwtKey).parseClaimsJws(token);
+//			return claims.getBody().getSubject();
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//			e.printStackTrace();
+//			return "ADMIN";
+//		}
+//	}
 
 }

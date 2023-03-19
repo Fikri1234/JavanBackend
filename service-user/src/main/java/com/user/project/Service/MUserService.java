@@ -30,6 +30,6 @@ public interface MUserService {
 	Optional<MUserEntity> findByEmail(String email);
 	List<MUserEntity> findByEmailOrderByIdDesc(String email);
 	
-	RoleEnum getRole();
+//	RoleEnum getRole();
 
 }

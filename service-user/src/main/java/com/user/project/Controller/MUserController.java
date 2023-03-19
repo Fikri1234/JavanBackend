@@ -26,7 +26,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.user.project.DTO.MUserDTO;
 import com.user.project.Entity.MUserEntity;
-import com.user.project.Enum.RoleEnum;
 import com.user.project.Service.MUserService;
 import com.user.project.Util.CustomException;
 
@@ -52,72 +51,49 @@ public class MUserController {
 	@GetMapping("/{id}")
 	public ResponseEntity<Object> retrieveById(@PathVariable("id") Long id) throws CustomException {
 		
-		RoleEnum roleEnum = getRole();
-		if (RoleEnum.ADMIN.isEqual(roleEnum.getCode())) {
-			Optional<MUserEntity> opt = mUserService.findById(id);
-			
-			if (opt.isPresent()) {
-				MUserDTO dto = new MUserDTO(opt.get());
-				log.info(LOG_FRMT, dto);
-				return new ResponseEntity<>(dto, HttpStatus.OK);
-			} else {
-				log.error("id not found: ", id);
-				throw new CustomException("Unable to find id " + id, HttpStatus.NOT_FOUND);
-			}
+		Optional<MUserEntity> opt = mUserService.findById(id);
+		
+		if (opt.isPresent()) {
+			MUserDTO dto = new MUserDTO(opt.get());
+			log.info(LOG_FRMT, dto);
+			return new ResponseEntity<>(dto, HttpStatus.OK);
 		} else {
-			return new ResponseEntity<>(null, HttpStatus.FORBIDDEN);
+			log.error("id not found: ", id);
+			throw new CustomException("Unable to find id " + id, HttpStatus.NOT_FOUND);
 		}
 	}
 	
 	@GetMapping("/")
 	public ResponseEntity<Object> retrieveAllEnabled() {
 		
-		RoleEnum roleEnum = getRole();
-		if (RoleEnum.ADMIN.isEqual(roleEnum.getCode())) {
-			List<MUserDTO> dtos = new ArrayList<>();
-			List<MUserEntity> entities = mUserService.findAll();
+		List<MUserDTO> dtos = new ArrayList<>();
+		List<MUserEntity> entities = mUserService.findAll();
 
-			if (!entities.isEmpty()) {
-				dtos = entities.stream().map(MUserDTO::new).collect(Collectors.toList());
-			}
-
-			return new ResponseEntity<>(dtos, HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>(null, HttpStatus.FORBIDDEN);
+		if (!entities.isEmpty()) {
+			dtos = entities.stream().map(MUserDTO::new).collect(Collectors.toList());
 		}
+
+		return new ResponseEntity<>(dtos, HttpStatus.OK);
 	}
 	
 	@PostMapping("/")
     public ResponseEntity<Object> postMUserEntity(@RequestBody MUserDTO dto) throws CustomException {
         log.info("REST API for insert postMUserEntity: {}", dto);
         
-        RoleEnum roleEnum = getRole();
-		if (RoleEnum.ADMIN.isEqual(roleEnum.getCode())) {
-			try {
-				MUserEntity entity = new MUserEntity();
-				BeanUtils.copyProperties(dto, entity);
+        try {
+			MUserEntity entity = new MUserEntity();
 
-				Optional<MUserEntity> opt = mUserService.findByEmail(dto.getEmail());
-				if (opt.isPresent()) {
+			entity.setEmail(dto.getEmail());
+			entity.setRole(dto.getRole());
+			entity.setPassword(userPasswordEncoder.encode(dto.getPassword()));
 
-					entity.setId(opt.get().getId());
-					mUserService.update(entity);
-					BeanUtils.copyProperties(entity, dto);
-					return new ResponseEntity<>(dto, HttpStatus.OK);
-				}
+			mUserService.save(entity);
 
-				entity.setPassword(userPasswordEncoder.encode(dto.getPassword()));
-
-				mUserService.save(entity);
-
-				BeanUtils.copyProperties(entity, dto);
-				return new ResponseEntity<>(dto, HttpStatus.CREATED);
-			} catch (Exception e) {
-				e.printStackTrace();
-				throw new CustomException(e.getMessage(), HttpStatus.CONFLICT);
-			}
-		} else {
-			return new ResponseEntity<>(null, HttpStatus.FORBIDDEN);
+			BeanUtils.copyProperties(entity, dto);
+			return new ResponseEntity<>(dto, HttpStatus.CREATED);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new CustomException(e.getMessage(), HttpStatus.CONFLICT);
 		}
     }
 	
@@ -125,33 +101,28 @@ public class MUserController {
     public ResponseEntity<Object> putMUserEntity(@RequestBody MUserDTO dto) throws CustomException {
         log.info("REST API for update putMUserEntity");
         
-		RoleEnum roleEnum = getRole();
-		if (RoleEnum.ADMIN.isEqual(roleEnum.getCode())) {
-			Optional<MUserEntity> opt = mUserService.findById(dto.getId());
+        Optional<MUserEntity> opt = mUserService.findById(dto.getId());
 
-			if (!opt.isPresent()) {
-				log.error("Unable to update. MUserEntity with id {} not found", dto.getId());
-				throw new CustomException("Unable to update. MUserEntity with id " + dto.getId() + " not found",
-						HttpStatus.NOT_FOUND);
-			}
+		if (!opt.isPresent()) {
+			log.error("Unable to update. MUserEntity with id {} not found", dto.getId());
+			throw new CustomException("Unable to update. MUserEntity with id " + dto.getId() + " not found",
+					HttpStatus.NOT_FOUND);
+		}
 
-			try {
-				MUserEntity entity = new MUserEntity();
-				BeanUtils.copyProperties(dto, entity);
+		try {
+			MUserEntity entity = new MUserEntity();
+			BeanUtils.copyProperties(dto, entity);
 
-				opt.get().setEmail(dto.getEmail());
-				opt.get().setRole(dto.getRole());
+			opt.get().setEmail(dto.getEmail());
+			opt.get().setRole(dto.getRole());
 
-				mUserService.update(opt.get());
+			mUserService.update(opt.get());
 
-				BeanUtils.copyProperties(opt.get(), dto);
-				return new ResponseEntity<>(dto, HttpStatus.OK);
-			} catch (Exception e) {
-				e.printStackTrace();
-				throw new CustomException(e.getMessage(), HttpStatus.CONFLICT);
-			}
-		} else {
-			return new ResponseEntity<>(null, HttpStatus.FORBIDDEN);
+			BeanUtils.copyProperties(opt.get(), dto);
+			return new ResponseEntity<>(dto, HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new CustomException(e.getMessage(), HttpStatus.CONFLICT);
 		}
     }
 	
@@ -159,78 +130,59 @@ public class MUserController {
     public ResponseEntity<Object> deleteMUserEntityById(@PathVariable("id") Long id) throws CustomException {
         log.info("REST API for delete deleteMUserEntityById by id : {}", id);
         
-		RoleEnum roleEnum = getRole();
-		if (RoleEnum.ADMIN.isEqual(roleEnum.getCode())) {
-			Optional<MUserEntity> opt = mUserService.findById(id);
+        Optional<MUserEntity> opt = mUserService.findById(id);
 
-			if (!opt.isPresent()) {
-				log.error("Unable to delete.MUserEntity with id {} not found", id);
-				throw new CustomException("Unable to delete.MUserEntity with id " + id + " not found",
-						HttpStatus.NOT_FOUND);
-			}
+		if (!opt.isPresent()) {
+			log.error("Unable to delete.MUserEntity with id {} not found", id);
+			throw new CustomException("Unable to delete.MUserEntity with id " + id + " not found",
+					HttpStatus.NOT_FOUND);
+		}
 
-			try {
-				mUserService.deleteById(id);
-				return ResponseEntity.ok(null);
-			} catch (Exception e) {
-				e.printStackTrace();
-				throw new CustomException(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-			}
-		} else {
-			return new ResponseEntity<>(null, HttpStatus.FORBIDDEN);
+		try {
+			mUserService.deleteById(id);
+			return ResponseEntity.ok(null);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new CustomException(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
     }
 	
 	@GetMapping("/paging")
 	public ResponseEntity<Object> retrieveAllPaging(Pageable pageable) {
 
-		RoleEnum roleEnum = getRole();
-		if (RoleEnum.ADMIN.isEqual(roleEnum.getCode())) {
-			List<MUserDTO> dtos = new ArrayList<>();
-			Page<MUserEntity> pages = mUserService.findAll(pageable);
+		List<MUserDTO> dtos = new ArrayList<>();
+		Page<MUserEntity> pages = mUserService.findAll(pageable);
 
-			if (pages.hasContent()) {
-				Page<MUserDTO> dtoPage = pages.map(new Function<MUserEntity, MUserDTO>() {
+		if (pages.hasContent()) {
+			Page<MUserDTO> dtoPage = pages.map(new Function<MUserEntity, MUserDTO>() {
 
-					@Override
-					public MUserDTO apply(MUserEntity entity) {
-						return new MUserDTO(entity);
-					}
-				});
+				@Override
+				public MUserDTO apply(MUserEntity entity) {
+					return new MUserDTO(entity);
+				}
+			});
 
-				return new ResponseEntity<>(dtoPage, HttpStatus.OK);
-			}
-
-			return new ResponseEntity<>(dtos, HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>(null, HttpStatus.FORBIDDEN);
+			return new ResponseEntity<>(dtoPage, HttpStatus.OK);
 		}
+
+		return new ResponseEntity<>(dtos, HttpStatus.OK);
 	}
 	
 	@GetMapping("/email/{email}")
 	public ResponseEntity<Object> retrieveByEmail(@PathVariable("email") String email) throws CustomException {
 		
-		RoleEnum roleEnum = getRole();
-		if (RoleEnum.ADMIN.isEqual(roleEnum.getCode())) {
-			MUserDTO dto = new MUserDTO();
-			Optional<MUserEntity> opt = mUserService.findByEmail(email);
+		MUserDTO dto = new MUserDTO();
+		Optional<MUserEntity> opt = mUserService.findByEmail(email);
 
-			if (opt.isPresent()) {
-				BeanUtils.copyProperties(opt.get(), dto);
-				log.info(LOG_FRMT, dto);
-				return new ResponseEntity<>(dto, HttpStatus.OK);
-			} else {
-				log.error("email not found: ", email);
-
-				throw new CustomException("Unable to find email " + email, HttpStatus.NOT_FOUND);
-			}
+		if (opt.isPresent()) {
+			BeanUtils.copyProperties(opt.get(), dto);
+			log.info(LOG_FRMT, dto);
+			return new ResponseEntity<>(dto, HttpStatus.OK);
 		} else {
-			return new ResponseEntity<>(null, HttpStatus.FORBIDDEN);
+			log.error("email not found: ", email);
+
+			throw new CustomException("Unable to find email " + email, HttpStatus.NOT_FOUND);
 		}
-	}
-	
-	private RoleEnum getRole() {
-		return mUserService.getRole();
 	}
 
 }
